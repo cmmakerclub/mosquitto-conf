@@ -2,10 +2,13 @@
 
 ## preparation
 	$ cd $HOME
-	$ git clone 
+	$ git clone https://github.com/cmmakerclub/mosquitto-conf.git
+
 	
-# for raspberry pi
+# for x86
 	docker run -it -p 1883:1883 -p 9001:9001 -v $HOME/mosquitto-conf/config:/mosquitto/config -v /mosquitto/data -v /mosquitto/log eclipse-mosquitto:1.4.12
 
-# for x86
-	docker run -it -p 1883:1883 -p 9001:9001 -v $HOME/mosquitto-conf/config:/mosquitto/config -v /mosquitto/data -v /mosquitto/log sbiermann/rpi-mosquitto
+# for raspberry pi
+	export MOUNT_LOG_DIR=$HOME/mosquitto-conf/log:/mqtt/log
+	export MOUNT_DATA_DIR=$HOME/mosquitto-conf/data:/mqtt/data
+	docker run -it -p 1883:1883 -p 9001:9001 -v $MOUNT_DATA_DIR -v MOUNT_LOG_DIR $HOME/mosquitto-conf/config:/mosquitto/config -v /mosquitto/data -v  sbiermann/rpi-mosquitto
