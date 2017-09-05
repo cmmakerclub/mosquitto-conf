@@ -4,10 +4,6 @@
 	$ cd $HOME
 	$ git clone https://github.com/cmmakerclub/mosquitto-conf.git
 
-	
-# for x86
-	docker run -it -p 1883:1883 -p 9001:9001 -v $HOME/mosquitto-conf/config:/mosquitto/config -v /mosquitto/data -v /mosquitto/log eclipse-mosquitto:1.4.12
-
 # for raspberry pi
 	export MOUNT_CONF_DIR=$HOME/mosquitto-conf/config
 	export MOUNT_LOG_DIR=$HOME/mosquitto-conf/log
